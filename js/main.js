@@ -72,6 +72,30 @@ function initSkillCards() {
 }
 
 // ==========================================
+// Background Music Control
+// ==========================================
+let isMusicPlaying = false;
+
+function toggleMusic() {
+    const music = document.getElementById('bgMusic');
+    const control = document.getElementById('musicControl');
+    
+    if (isMusicPlaying) {
+        music.pause();
+        control.textContent = '🎵';
+        control.classList.remove('playing');
+        isMusicPlaying = false;
+    } else {
+        music.play().catch(err => {
+            console.log('Autoplay was prevented:', err);
+        });
+        control.textContent = '🔊';
+        control.classList.add('playing');
+        isMusicPlaying = true;
+    }
+}
+
+// ==========================================
 // Chess Knight Sound Effect
 // ==========================================
 function playSound() {
